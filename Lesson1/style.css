@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+button.plus{
+    color: red;
+    width: 100px;
+    height: 50px;
+    background-color: aliceblue;
+}
+button.minus{
+    color: aqua;
+    width: 50px;
+    height: 50px;
+    background-color: #777777;
+}
