@@ -1,7 +1,10 @@
-const button = document.getElementById('button')
-const input = document.getElementById('input')
-button.onclick =()=> {
-    const tag = document.createElement('div')
-    input.getElementxsByClassName('plus')
-
+const users = [ 1 , 2, 324, 23, 22]
+const men = [ 32 , 324 , 2343, 22,]
+if (users.length>men.length){
+    console.log('Первый массив больше второго')}
+else if (users.length<men.length){
+  console.log('Второй массив больше первого')
+}
+else {
+  console.log('Они равны')
 }
