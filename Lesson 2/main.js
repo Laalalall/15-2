@@ -41,8 +41,8 @@ function Twomass(arr1,arr2) {
     }
 }
 
-const arr1 = [223,4432,3322222,2,75,4]
-const arr2 = [6, 43,325,22]
-Twomass(arr1,arr2)
-const imput = document,getElementByld("input")
-const button = document,getElemntByld('')
+// const arr1 = [223,4432,3322222,2,75,4]
+// const arr2 = [6, 43,325,22]
+// Twomass(arr1,arr2)
+// const imput = document,getElementByld("input")
+// const button = document,getElemntByld()
