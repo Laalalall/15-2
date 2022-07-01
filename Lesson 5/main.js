@@ -1,94 +1,72 @@
-// const list = [
-//     {
-//         id: 1,
-//         text: "Learn JS!"
-//     },
-//     {
-//         id:2,
-//         text: "test"
-//     }
-// ];
-// function render() {
-//     const mainDiv = document.createElement('div')
-//     mainDiv.setAttribute('class','list')
-//
-//     for (let i=0; i < list.length; i++){
-//         const div = document.createElement('div')
-//         div.setAttribute('class','todoBlock')
-//         const p =document.createElement('p')
-//         p.innerText = list[i].text;
-//         div.append(p)
-//
-//         const button =document.createElement('div');
-//         button.setAttribute('class','actions');
-//         const changeButton = document.createElement('button');
-//         changeButton.setAttribute('class','change');
-//         changeButton.innerText ="change";
-//         const deleteButton =document.createElement('button');
-//         deleteButton.setAttribute('class','delete');
-//         deleteButton.innerText = "delete";
-//
-//         button.append(changeButton,deleteButton);
-//         div.append(button);
-//         mainDiv.append(div);
-//     }
-//         const form = document.querySelector('.form')
-//         form.append(mainDiv)
-//
-// }
-// render()
-const list = [
-    {
-        id: 1,
-        text: "Learn JS!"
-    },
-    {
-        id: 2,
-        text: "test"
-    }
-
-];
-
-const addButton = document.getElementById('button')
+const list = [];
+const addButton = document.getElementById('button');
 const input = document.getElementById('input')
 
-function render() {
-    const mainDiv = document.createElement('div')
-    mainDiv.setAttribute('class', 'list')
-
-    for(let i = 0; i < list.length; i++){
-        const div = document.createElement('div');
-        div.setAttribute('class', 'todoBlock')
-        const p = document.createElement('p');
-        p.innerText = list[i].text;
-        div.append(p)
-
-        const buttons = document.createElement('div');
-        buttons.setAttribute('class', 'actions');
-        const changeButton = document.createElement('button');
-        changeButton.setAttribute('class', 'change');
-        changeButton.innerText = "change";
-        const deleteButton = document.createElement('button');
-        deleteButton.setAttribute('class', 'delete');
-        deleteButton.innerText = "delete";
-
-        buttons.append(changeButton, deleteButton);
-        div.append(buttons);
-        mainDiv.append(div);
-
+function change(id) {
+  const item = list.findIndex((d) => {
+    if (d.id === id) {
+      return true;
     }
-
-    const form = document.querySelector('.form');
-    div.remove()
-    form.append(mainDiv)
+  })
+  const text = prompt('Текст для изменения')
+  list[item].text = text;
+  render()
 }
-addButton.onclick = function () {
-    const obj ={
-        id: list.length+1,
-        text: input.value
+
+function Deleted(id) {
+  const item = list.findIndex(d => d.id === id)
+  list.splice(item, 1)
+  render(list)
+}
+
+function render() {
+  const mainDiv = document.createElement('div');
+  mainDiv.setAttribute('class', 'list');
+
+  for (let i = 0; i < list.length; i++) {
+    const div = document.createElement('div');
+    div.setAttribute('class', 'todoBlock');
+    const p = document.createElement('p');
+    p.innerText = list[i].text
+    div.append(p);
+
+    const buttons = document.createElement('div');
+    buttons.setAttribute('class', 'actions');
+    const changeButton = document.createElement('button');
+    changeButton.setAttribute('class', 'change');
+    changeButton.setAttribute('class', 'change');
+    changeButton.onclick = () => {
+      change(list[i].id)
     }
+    changeButton.innerText = "change";
+    const deleteButton = document.createElement('button');
+    deleteButton.setAttribute('class', 'delete');
+    deleteButton.onclick = () => {
+      Deleted(list[i].id).remove()
+    }
+    deleteButton.innerText = "delete";
+    buttons.append(changeButton, deleteButton);
+    div.append(buttons);
+    mainDiv.append(div);
+
+  }
+
+  const form = document.querySelector('.form');
+  document.querySelector('.list').remove();
+  form.append(mainDiv);
+}
+
+
+addButton.addEventListener('click', function () {
+  const obj = {
+    id: list.length + 1,
+    text: input.value
+  }
+  if (input.value === '') {
+    return false
+  } else {
     list.push(obj)
-    render();
-};
-
-
+    render()
+  }
+  input.value = '';
+})
