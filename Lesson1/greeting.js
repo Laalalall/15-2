@@ -8,3 +8,17 @@ else if (users.length<men.length){
 else {
   console.log('Они равны')
 }
+const name = prompt("Ваше Имя")
+alert('Привет' + name)
+swetofor = prompt("Какой цвет?")
+switch (swetofor) {
+    case "Зелёный":
+        alert('Вперёд');
+        break;
+    case "Жёлтый":
+        alert('Ожидание');
+        break;
+    case "Красный":
+        alert("Стоп");
+        break;
+}
