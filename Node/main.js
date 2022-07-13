@@ -1,11 +1,31 @@
-var articleDiv = document.querySelector("div.article");
-// находим узел, который будем заменять - первый параграф
-var oldNode = document.querySelectorAll("div.article p")[0];
-// создаем элемент
-var newNode = document.createElement("h2");
-// создаем для него текст
-var elemText = document.createTextNode("Привет мир");
-// добавляем текст в элемент в качестве дочернего элемента
-newNode.appendChild(elemText);
-// заменяем старый узел новым
-articleDiv.replaceChild(newNode, oldNode);
+ // const INNInput = document.querySelector(".INNInput");
+ // const INNCheck = document.getElementsByClassName("INNCheck");
+ // const INNResult = document.querySelector(".INNResult");
+ //  console.log(INNCheck[0],"INNCheck");
+ //  console.log(INNInput ,"INNInput");
+ // const INNRegExp = /0\d{13}$/;
+ //
+ // INNCheck[0].addEventListener("click", () => {
+ //   if (INNRegExp.test(INNInput.value)) {
+ //     INNResult.innerText = "ok";
+ //     INNResult.style.color = "green";
+ //   } else {
+ //     INNResult.innerText = "not ok";
+ //     INNResult.style.color = "red";
+ //   }((
+ // });
+    const block = document.querySelector(".block")
+    let  num = 0;
+    const plus = function (leftBlock) {
+        num++;
+        block.style.left = `${num}px`
+        if (num < 50){
+            return plus();
+        }else if (num > 449){
+            num = 0;
+        }else {
+            num += 50;
+        }
+        leftBlock();
+    }
+    block.addEventListener("click", plus)
