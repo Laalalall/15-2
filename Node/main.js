@@ -21,7 +21,7 @@
         block.style.left = `${num}px`
         if (num < 50){
             return plus();
-        }else if (num > 449){
+        }else if (num > 448){
             num = 0;
         }else {
             num += 50;
